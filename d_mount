@@ -1,0 +1,5 @@
+if [ $1 = 'up' ]; then
+    sudo mount -t nfs4 10.0.0.99:/var/www/html /dev1
+elif [ $1 = 'down' ]; then
+    sudo umount /dev1
+fi
