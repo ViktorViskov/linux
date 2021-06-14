@@ -54,5 +54,9 @@ light=${light%.*}
 date=`date +%d.%m.%y`
 time=`date +%H:%M`
 
+#cpu temp
+temp=`cat /sys/class/thermal/thermal_zone0/temp`
+temp=${temp%000*}
+
 # main command
-xsetroot -name "$lang  $battery%  $volume%  $light%  $date  $time"
+xsetroot -name "$lang  $temp  $battery%  $volume%  $light%  $date  $time"
