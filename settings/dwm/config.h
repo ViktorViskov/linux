@@ -56,11 +56,12 @@ static const Layout layouts[] = {
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
 static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", normbgcolor, "-nf", normfgcolor, "-sb", selbgcolor, "-sf", selfgcolor, NULL };
 static const char *termcmd[]  = { "x-terminal-emulator", NULL };
-static const char *volUp[]  = { "amixer", "sset","Master", "5%+","unmute", NULL };
-static const char *volDown[]  = { "amixer", "sset","Master", "5%-","unmute", NULL };
-static const char *lightUp[]  = { "xbacklight", "-inc","10%", NULL };
-static const char *lightDown[]  = { "xbacklight", "-dec","10%", NULL };
+static const char *volUp[]  = { "statusBar.sh", "sound+", NULL };
+static const char *volDown[]  = { "statusBar.sh", "sound-", NULL };
+static const char *lightUp[]  = { "statusBar.sh", "backlight+", NULL };
+static const char *lightDown[]  = { "statusBar.sh", "backlight-", NULL };
 static const char *suspend[]  = { "systemctr", "suspend", NULL };
+static const char *lang[]  = { "statusBar.sh", "lang", NULL };
 
 static Key keys[] = {
 	/* modifier                     key        function        argument */
@@ -102,6 +103,7 @@ static Key keys[] = {
 	{0,								XF86XK_MonBrightnessUp, spawn, {.v = lightUp } },
 	{0,								XF86XK_MonBrightnessDown, spawn, {.v = lightDown } },
 	{0,								XF86XK_Sleep, spawn, {.v = suspend } },
+	{0,								XK_Super_L, spawn, {.v = lang } },
 };
 
 /* button definitions */
