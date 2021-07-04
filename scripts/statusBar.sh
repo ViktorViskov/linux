@@ -38,6 +38,12 @@ fi
 lang=`setxkbmap -query | grep layout`
 lang=${lang#*     }
 
+# wifi name
+wifi=`nmcli | awk NR==1'{print $4}'`
+
+# ip address
+ip=`hostname -I`
+
 # battery
 battery=`cat /sys/class/power_supply/BAT0/capacity`
 
@@ -59,4 +65,4 @@ temp=`cat /sys/class/thermal/thermal_zone0/temp`
 temp=${temp%000*}
 
 # main command
-xsetroot -name "$lang  $temp  $battery%  $volume%  $light%  $date  $time"
+xsetroot -name "$lang | $wifi $ip|  $temp |  $battery% |  $volume%  $light% |  $date  $time"
