@@ -1,0 +1,20 @@
+#!/bin/sh
+
+# /etc/X11/xinit/xinitrc
+#
+# global xinitrc file, used by all X sessions started by xinit (startx)
+
+# invoke global X session script
+#. /etc/X11/Xsession
+
+xrandr -s 1920x1080
+xrandr --dpi 96
+exec fluxbox &
+
+# wallpapers
+while true; do
+    sleep 600
+    wget https://picsum.photos/1920/1080 -O /home/viktor/bg.jpg
+    rm wget-log
+    fbsetbg /home/viktor/bg.jpg
+done
