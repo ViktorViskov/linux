@@ -81,6 +81,8 @@ Mod1 F5 :Kill
 Mod1 F9 :Minimize
 Mod1 F10 :Maximize
 Mod1 F11 :Fullscreen
+Mod1 F12 :SetLayer Dock
+Control F12 :SetLayer Normal
 
 # open the window menu
 Mod1 space :WindowMenu
@@ -108,14 +110,6 @@ Mod1 1 :Workspace 1
 Mod1 2 :Workspace 2
 Mod1 3 :Workspace 3
 Mod1 4 :Workspace 4
-Control F5 :Workspace 5
-Control F6 :Workspace 6
-Control F7 :Workspace 7
-Control F8 :Workspace 8
-Control F9 :Workspace 9
-Control F10 :Workspace 10
-Control F11 :Workspace 11
-Control F12 :Workspace 12
 
 # send the current window to a specific workspace
 Control Mod1 1 :SendToWorkspace 1
