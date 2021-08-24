@@ -1,0 +1,13 @@
+[begin] (fluxbox)
+    [submenu] (System actions)
+        [exec] (Reboot) {systemctl reboot}
+        [exec] (Shutdown) {systemctl shotdown}
+    [end]
+    [submenu] (Apps)
+        [exec] (Google chrome) {google-chrome-stable}
+        [exec] (Chromium) {chromium}
+        [exec] (Geany) {geany}
+    [end]
+
+[include] (/etc/X11/fluxbox/fluxbox-menu)
+[end]
