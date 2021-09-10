@@ -1,7 +1,7 @@
 [begin] (fluxbox)
     [submenu] (System actions)
         [exec] (Reboot) {systemctl reboot}
-        [exec] (Shutdown) {systemctl shotdown}
+        [exec] (Shutdown) {systemctl poweroff}
     [end]
     [submenu] (Apps)
         [exec] (Google chrome) {google-chrome-stable}
