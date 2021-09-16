@@ -1,0 +1,1 @@
+xautolock -time 12 -locker "systemctl suspend" -detectsleep
