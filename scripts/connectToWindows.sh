@@ -1,2 +1,2 @@
-wakeonlan 10:7b:44:18:ee:ef
-xfreerdp /u:vikt3586 /p:Merc77449 /w:1366 /h:768 /v:10.0.0.10
+#wakeonlan 10:7b:44:18:ee:ef
+xfreerdp /u:viktor /p:+z123987- /w:1920 /h:1080 /v:10.0.0.10
