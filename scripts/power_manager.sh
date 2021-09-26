@@ -23,8 +23,9 @@ do
         then
             # new sleep counter
             pause=$default_pause
-            
+
             # sleep command
+            xflock4
             systemctl suspend-then-hibernate
         else
             pause=`expr $pause - $step_time`
