@@ -1,0 +1,1 @@
+youtube-dl https://www.youtube.com/watch?v=8DJfHv_MPM8 -o video.mp4 ; ffmpeg -i video.mp4 -b:a 128K -vn audio_1.mp3 ; rm video.mp4
