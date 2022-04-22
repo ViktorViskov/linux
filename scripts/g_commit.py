@@ -8,8 +8,14 @@ from os import system
 
 # main function
 def main():
-    # read user message
+    # start message read user message
+    print("Type 'exit' to close program")
     user_message = read_commit_description("Commit description:")
+
+    # if exit stop program
+    if user_message.lower().strip(" ") == "exit":
+        print("Canceled by user")
+        return
 
     # make commit and push
     system("git add .")
