@@ -1,1 +1,0 @@
-sudo umount /m_$1
