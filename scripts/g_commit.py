@@ -24,7 +24,7 @@ def main():
 
 # function for read user input only one word
 def read_commit_description(message:str):
-    # define variable and read result to time when user input dont have spaces and size more like 0 chars
+    # define variable and read user input
     user_input:str = ""
     while len(user_input) == 0:
         user_input = input(message + " ")
