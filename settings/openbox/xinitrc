@@ -7,13 +7,15 @@
 # invoke global X session script
 #. /etc/X11/Xsession
 
-xrandr -s 1920x1080
-xrandr --dpi 96
+xrandr --dpi 96 &
+xrandr -s 1920x1200 &
 
-#set_wallpaper.sh &
+set_wallpaper.sh &
 lxpanel &
 tint2 &
-#gxkb &
+gxkb &
+
+#exec lxpanel &
 
 # start openbox
 exec openbox
