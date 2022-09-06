@@ -3,7 +3,7 @@
 # Consult the keyboard(5) manual page.
 
 XKBMODEL="pc105"
-XKBLAYOUT="us,ua,ru"
+XKBLAYOUT="dk,ua,ru"
 XKBVARIANT=","
 XKBOPTIONS="grp:lwin_toggle,terminate:ctrl_alt_bksp,grp_led:scroll"
 
