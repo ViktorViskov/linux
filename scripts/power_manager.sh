@@ -7,7 +7,7 @@ step_time=30
 #chech for value
 if [ ! $default_pause ]
 then
-    default_pause=60
+    default_pause=10
 fi
 
 # variable for counting
@@ -25,7 +25,7 @@ do
             pause=$default_pause
 
             # sleep command
-            xflock4
+            i3lock
             systemctl suspend-then-hibernate
         else
             pause=`expr $pause - $step_time`
