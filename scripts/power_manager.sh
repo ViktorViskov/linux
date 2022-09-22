@@ -7,7 +7,7 @@ step_time=30
 #chech for value
 if [ ! $default_pause ]
 then
-    default_pause=10
+    default_pause=1800
 fi
 
 # variable for counting
