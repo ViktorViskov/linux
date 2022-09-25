@@ -1,0 +1,4 @@
+#!/bin/bash
+
+# autostart X server on tty1
+[ "$(tty)" = "/dev/tty1" ] && ! ps -e | grep -qw Xorg && exec bash $HOME/.select_session

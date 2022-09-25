@@ -1,0 +1,22 @@
+#!/usr/bin/bash
+
+echo "Press i for i3"
+echo "Press o for openbox"
+echo "Press c for CLI"
+
+
+read -sn 1 key
+
+if [ $key == "i" ]
+then
+startx $HOME/.xinitrc_custom i3
+
+elif [ $key == "o" ]
+then
+startx $HOME/.xinitrc_custom openbox
+
+elif [ $key == "c" ]
+then
+exec bash
+fi
+

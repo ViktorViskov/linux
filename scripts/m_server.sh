@@ -1,1 +1,0 @@
-sudo mount -t nfs4 10.0.0.2:/nfs/$1 /m_$1

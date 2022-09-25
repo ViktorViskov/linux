@@ -1,0 +1,27 @@
+#!/bin/sh
+
+# setup screen resolution and time to enegry save
+xrandr -r 165
+xset dpms 0 300 0
+
+# global additionsl software
+lxpanel &
+compton & #compoziting
+system-config-printer-applet & #printer icon tray
+powermanager &
+
+# software for specific window manager
+# if session i3
+if [ $1 = "i3" ]
+then
+	# background screen
+	set_wallpapers.sh &
+
+elif [ $1 = "openbox" ]
+then
+	# desktop icons
+	pcmanfm --desktop & #desktop background and icones
+fi
+
+#start window manager
+exec $1

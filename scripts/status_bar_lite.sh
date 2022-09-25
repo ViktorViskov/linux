@@ -1,7 +1,6 @@
 #!/usr/bin/bash
 
 # app controll
-
 if [ $1 == "sound+" ]
 then
 	`amixer sset Master 5%+ unmute`
