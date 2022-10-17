@@ -1,1 +1,3 @@
-# linux_scripts
+# linux
+
+Config files and scripts for GNU/Linux
