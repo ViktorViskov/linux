@@ -1,0 +1,17 @@
+;
+; BIND data file for local loopback interface
+;
+$ORIGIN home.
+$TTL	2h
+@	SOA	home. root.home. (
+			      3		; Serial
+			     8h		; Refresh
+			    30m		; Retry
+			     1w		; Expire
+			     1h )	; Negative Cache TTL
+
+@	NS	home.
+@	A	192.168.0.2
+server	A	192.168.0.2
+laptops	A	192.168.0.2
+router	A	192.168.0.1
