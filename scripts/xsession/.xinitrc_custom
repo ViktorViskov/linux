@@ -1,21 +1,22 @@
 #!/bin/sh
 
 # setup screen resolution and time to enegry save
-xrandr -r 165
+# xrandr -r 165
 xset dpms 0 300 0
 
 # global additionsl software
+lxpolkit &
 lxpanel &
-compton & #compoziting
+# compton & #compoziting
 system-config-printer-applet & #printer icon tray
-powermanager &
+# powermanager &
 
 # software for specific window manager
 # if session i3
 if [ $1 = "i3" ]
 then
 	# background screen
-	set_wallpapers.sh &
+    # set_wallpapers.sh &
 
 elif [ $1 = "openbox" ]
 then
