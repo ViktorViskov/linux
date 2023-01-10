@@ -287,6 +287,16 @@
         <to>9</to>
       </action>
     </keybind>
+    <keybind key="A-Right">
+      <action name="GoToDesktop">
+        <to>next</to>
+      </action>
+    </keybind>
+    <keybind key="A-Left">
+      <action name="GoToDesktop">
+        <to>previous</to>
+      </action>
+    </keybind>
     <!-- Keybindings for windows -->
     <keybind key="C-Escape">
       <action name="Close"/>
