@@ -316,6 +316,9 @@
         <x>
           +0
         </x>
+        <y>
+          +0
+        </y>
         <width>
           50%
         </width>
@@ -329,6 +332,9 @@
         <x>
           -0
         </x>
+        <y>
+          +0
+        </y>
         <width>
           50%
         </width>
@@ -342,9 +348,6 @@
         <y>
           +0
         </y>
-        <width>
-          100%
-        </width>
         <height>
           50%
         </height>
@@ -355,9 +358,6 @@
         <y>
           -0
         </y>
-        <width>
-          100%
-        </width>
         <height>
           50%
         </height>
@@ -803,7 +803,7 @@
   # order that they appear in this list
 
 
-    # each rule element can be left out or set to 'default' to specify to not 
+    # each rule element can be left out or set to 'default' to specify to not
     # change that attribute of the window
 
     <decor>yes</decor>
