@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=FB Messanger
+GenericName=Messenger for fb
+Exec=brave-browser %u --app=https://www.facebook.com/messages/t/
+Terminal=false
+Type=Application
+Categories=GTK;WebBrowser;Network
+Icon=mail-unread

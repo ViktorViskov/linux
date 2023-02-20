@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Chat GPT
+GenericName=Chat GPT
+Exec=brave-browser %u --app=https://chat.openai.com/chat
+Terminal=false
+Type=Application
+Categories=GTK;WebBrowser;Network
+Icon=dialog-information
