@@ -24,6 +24,10 @@ font pango:monospace 8
 default_border none
 hide_edge_borders both
 
+# Backlight controll
+bindsym XF86MonBrightnessUp exec backlight_increase.sh
+bindsym XF86MonBrightnessDown exec backlight_decrease.sh 
+
 # Use pactl to adjust volume in PulseAudio.
 set $refresh_i3status killall -SIGUSR1 i3status
 bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +10% && $refresh_i3status

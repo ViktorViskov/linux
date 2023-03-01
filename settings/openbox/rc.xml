@@ -406,6 +406,17 @@
         <command>scrot -s</command>
       </action>
     </keybind>
+    <!-- Backlight controll-->
+    <keybind key="XF86MonBrightnessUp">
+      <action name="Execute">
+        <command>backlight_increase.sh</command>
+      </action>
+    </keybind>
+    <keybind key="XF86MonBrightnessDown">
+      <action name="Execute">
+        <command>backlight_decrease.sh</command>
+      </action>
+    </keybind>
     <!-- Keybindings for window switching -->
     <keybind key="A-Tab">
       <action name="NextWindow">
