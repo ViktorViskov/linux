@@ -417,6 +417,18 @@
         <command>backlight_decrease.sh</command>
       </action>
     </keybind>
+      <!-- Sound controll-->
+    <keybind key="XF86AudioRaiseVolume">
+      <action name="Execute">
+        <command>sound_increase.sh</command>
+      </action>
+    </keybind>
+    <keybind key="XF86AudioLowerVolume">
+      <action name="Execute">
+        <command>sound_decrease.sh</command>
+      </action>
+    </keybind>
+
     <!-- Keybindings for window switching -->
     <keybind key="A-Tab">
       <action name="NextWindow">
