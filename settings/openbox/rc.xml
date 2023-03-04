@@ -123,10 +123,15 @@
     <number>9</number>
     <firstdesk>1</firstdesk>
     <names>
-      <!-- set names up here if you want to, like this:
-    <name>desktop 1</name>
-    <name>desktop 2</name>
-    -->
+      <name>1</name>
+      <name>2</name>
+      <name>3</name>
+      <name>4</name>
+      <name>5</name>
+      <name>6</name>
+      <name>7</name>
+      <name>8</name>
+      <name>9</name>
     </names>
     <popupTime>0</popupTime>
     <!-- The number of milliseconds to show the popup for when switching
@@ -417,7 +422,7 @@
         <command>backlight_decrease.sh</command>
       </action>
     </keybind>
-      <!-- Sound controll-->
+    <!-- Sound controll-->
     <keybind key="XF86AudioRaiseVolume">
       <action name="Execute">
         <command>sound_increase.sh</command>
@@ -428,7 +433,6 @@
         <command>sound_decrease.sh</command>
       </action>
     </keybind>
-
     <!-- Keybindings for window switching -->
     <keybind key="A-Tab">
       <action name="NextWindow">
