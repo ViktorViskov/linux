@@ -2,8 +2,8 @@
 Type=Action
 Profiles=profile_id
 Name=Visual Studio Code
-Icon=com.visualstudio.code
- 
+Icon=vscode
+
 [X-Action-Profile profile_id]
 MimeTypes=inode/directory;
 Exec=code %D

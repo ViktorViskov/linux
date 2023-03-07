@@ -3,7 +3,7 @@ Type=Action
 Profiles=profile_id
 Name=Xfce Terminal
 Icon=org.xfce.terminal
- 
+
 [X-Action-Profile profile_id]
 MimeTypes=inode/directory;
-Exec=xfce4-terminal
+Exec=x-terminal-emulator
