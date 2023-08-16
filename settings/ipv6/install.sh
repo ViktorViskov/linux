@@ -1,0 +1,1 @@
+cat sysctl.conf | sudo tee -a /etc/sysctl.conf
