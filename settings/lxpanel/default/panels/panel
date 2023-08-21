@@ -57,7 +57,7 @@ Plugin {
   type=launchbar
   Config {
     Button {
-      id=pcmanfm.desktop
+      id=thunar.desktop
     }
     Button {
       id=lxde-x-terminal-emulator.desktop
@@ -109,12 +109,12 @@ Plugin {
 Plugin {
   type=thermal
   Config {
-    NormalColor=#77FF00
+    NormalColor=#77AA00
     Warning1Color=#fff000
     Warning2Color=#ff0000
     AutomaticLevels=1
-    Warning1Temp=105
-    Warning2Temp=110
+    Warning1Temp=85
+    Warning2Temp=95
     AutomaticSensor=1
   }
 }

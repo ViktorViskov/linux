@@ -1,2 +1,2 @@
 [Command]
-Logout=obsession-logout
+Logout=xfwm4 -r

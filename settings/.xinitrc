@@ -1,11 +1,17 @@
-xset dpms 0 60 0
-lxpanel &
-lxpolkit &
-nm-applet &
+#xrandr --output Virtual1 --mode 1920x1080
+xset dpms 0 300 0
+#feh --bg-fill $HOME/.config/background.jpg
+
 dunst &
 compton &
-#feh_set_wallpapers.sh &
+xbindkeys
+nm-applet &
+lxpanel &
+lxpolkit &
+xfce4-clipman &
 #blueman-applet &
 
+exec xfwm4
 #exec i3
-exec openbox
+#exec openbox
+
