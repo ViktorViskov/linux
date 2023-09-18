@@ -15,3 +15,4 @@ exec xfwm4
 #exec i3
 #exec openbox
 
+#xrdb -merge ~/.Xresources
