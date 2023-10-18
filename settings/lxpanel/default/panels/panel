@@ -77,6 +77,16 @@ Plugin {
   }
 }
 Plugin {
+  type=deskno
+  Config {
+  }
+}
+Plugin {
+  type=space
+  Config {
+  }
+}
+Plugin {
   type=pager
   Config {
   }
