@@ -48,8 +48,11 @@
 "i3lock"
   alt + l
 
-"thunar"
+"pcmanfm"
   alt + f
+
+"xfce4-screenshooter -r"
+  Print
 
 #"xbindkeys_show"
 #  control+shift + q
