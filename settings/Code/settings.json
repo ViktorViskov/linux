@@ -1,4 +1,24 @@
 {
-    "workbench.colorTheme": "Default Dark+",
-    "files.autoSave": "onFocusChange"
+  "workbench.colorTheme": "Default Dark+",
+  "files.autoSave": "onFocusChange",
+  "git.autofetch": true,
+  "codesnap.showWindowControls": false,
+  "editor.inlineSuggest.suppressSuggestions": true,
+  "diffEditor.ignoreTrimWhitespace": false,
+  "[dockercompose]": {
+    "editor.defaultFormatter": "docker.docker"
+  },
+  "editor.detectIndentation": false,
+  "github.copilot.editor.enableAutoCompletions": true,
+  "python.analysis.diagnosticMode": "workspace",
+  "gitlens.ai.model": "vscode",
+  "gitlens.ai.vscode.model": "copilot:gpt-4o",
+  "files.trimTrailingWhitespace": true,
+  "python.analysis.typeCheckingMode": "standard",
+  "workbench.settings.applyToAllProfiles": ["python.analysis.typeCheckingMode"],
+  "emmet.includeLanguages": {
+    "jinja-html": "html"
+  },
+  "gitlens.ai.largePromptWarningThreshold": 200000,
+  "workbench.iconTheme": "material-icon-theme"
 }
