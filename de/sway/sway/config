@@ -294,6 +294,35 @@ bindcode $mod+Control+26 exec thunar
 
 
 # ============================================================
+# DEVELOPMENT TOOLS
+# ============================================================
+
+# Launch installed development tools without tying them to workspaces.
+# Use keycodes so the launcher and choices stay on the same physical keys
+# across US / UA / DK / RU layouts.
+mode "launch" {
+    bindcode 38 exec chatgpt %U --ozone-platform=wayland, mode "default"
+    bindcode 54 exec code --ozone-platform=wayland, mode "default"
+    bindcode 56 exec brave-browser --ozone-platform=wayland, mode "default"
+    bindcode 28 exec thunar, mode "default"
+    bindcode 42 exec geany, mode "default"
+
+    bindsym Escape mode "default"
+}
+
+bindcode $mod+53 mode "launch"
+
+
+# ============================================================
+# SCRATCHPAD
+# ============================================================
+
+# Temporarily hide the focused window, then bring a scratchpad window back.
+bindsym $mod+Shift+minus move scratchpad
+bindsym $mod+minus scratchpad show
+
+
+# ============================================================
 # LOCK SCREEN
 # ============================================================
 
