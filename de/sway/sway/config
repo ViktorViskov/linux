@@ -306,6 +306,7 @@ mode "launch" {
     bindcode 56 exec brave-browser --ozone-platform=wayland, mode "default"
     bindcode 28 exec thunar, mode "default"
     bindcode 42 exec geany, mode "default"
+    bindcode 33 exec ~/.config/sway/scripts/project-picker.sh, mode "default"
 
     bindsym Escape mode "default"
 }
