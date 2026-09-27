@@ -1,0 +1,475 @@
+# ============================================================
+# SWAY CONFIG
+# Adapted from existing i3 configuration
+# ============================================================
+
+
+# ============================================================
+# MODIFIER
+# ============================================================
+
+# Keep Alt as the main window-manager modifier.
+# Super is reserved for keyboard layout switching.
+set $mod Mod1
+
+font pango:monospace 8
+
+
+# ============================================================
+# WINDOW APPEARANCE
+# ============================================================
+
+# Disable borders.
+default_border none
+default_floating_border none
+hide_edge_borders both
+
+# Default gaps for newly created workspaces
+gaps inner 8
+gaps outer 0
+
+# Apply gaps to already existing workspaces after config reload
+exec_always swaymsg gaps inner all set 8
+exec_always swaymsg gaps outer all set 0
+
+
+# ============================================================
+# CURSOR
+# ============================================================
+
+seat seat0 xcursor_theme Adwaita 24
+
+
+# ============================================================
+# ENVIRONMENT
+# ============================================================
+
+# Export Sway/Wayland environment to systemd user services
+exec systemctl --user set-environment \
+    XDG_CURRENT_DESKTOP=sway \
+    XDG_SESSION_DESKTOP=sway \
+    XDG_SESSION_TYPE=wayland
+
+exec systemctl --user import-environment \
+    WAYLAND_DISPLAY \
+    SWAYSOCK
+
+# Export the same environment to D-Bus activated services
+exec dbus-update-activation-environment --systemd \
+    WAYLAND_DISPLAY \
+    SWAYSOCK \
+    XDG_CURRENT_DESKTOP=sway \
+    XDG_SESSION_DESKTOP=sway \
+    XDG_SESSION_TYPE=wayland
+
+
+# ============================================================
+# KEYBOARD
+# ============================================================
+
+# Default keyboard profile:
+# US / UA / DK / RU
+input type:keyboard {
+    xkb_layout "us,ua,dk,ru"
+
+    repeat_delay 300
+    repeat_rate 40
+}
+
+
+# ------------------------------------------------------------
+# Keyboard profile 1
+#
+# XF86Search:
+# US / UA
+# ------------------------------------------------------------
+
+bindsym --release Mod1+XF86Search exec \
+    swaymsg input type:keyboard xkb_layout '"us,ua"'
+
+
+# ------------------------------------------------------------
+# Keyboard profile 2
+#
+# XF86Favorites:
+# US / UA / DK / RU
+# ------------------------------------------------------------
+
+bindsym --release Mod1+XF86Favorites exec \
+    swaymsg input type:keyboard xkb_layout '"us,ua,dk,ru"'
+
+
+# ------------------------------------------------------------
+# Switch to next layout
+#
+# Super:
+# US -> UA -> ...
+#
+# Because Alt is used as $mod, Super can be dedicated
+# completely to keyboard layout switching.
+# ------------------------------------------------------------
+
+bindcode --locked --release 133 exec \
+    swaymsg input type:keyboard xkb_switch_layout next
+
+# ============================================================
+# TOUCHPAD
+# ============================================================
+
+input type:touchpad {
+    tap enabled
+    natural_scroll enabled
+    dwt enabled
+}
+
+
+# ============================================================
+# MOUSE
+# ============================================================
+
+input type:pointer {
+    accel_profile adaptive
+    pointer_accel 0
+}
+
+
+# ============================================================
+# MONITORS
+# ============================================================
+
+# Generated/managed by nwg-displays.
+include ~/.config/sway/outputs
+include ~/.config/sway/workspaces
+
+# Workspace 9 always on HDMI-A-1
+workspace 9 output HDMI-A-1
+set $ws9 "9"
+
+# ============================================================
+# WINDOW ASSIGNMENTS
+# ============================================================
+
+# ChatGPT always opens on workspace 9
+assign [app_id="^chatgpt$"] $ws9
+
+# ============================================================
+# WALLPAPER
+# ============================================================
+
+output * bg /home/viktor/Картинки/wallpaper.jpg fill
+
+
+# ============================================================
+# AUTOSTART
+# ============================================================
+
+# Status bar
+exec waybar
+
+# Notifications
+exec mako
+
+# NetworkManager tray
+exec nm-applet --indicator
+
+# Bluetooth tray
+exec blueman-applet
+
+# Removable drives
+exec udiskie --tray
+
+# PolicyKit authentication agent
+exec /usr/lib/x86_64-linux-gnu/libexec/polkit-kde-authentication-agent-1
+
+
+# ============================================================
+# CLIPBOARD
+# ============================================================
+
+exec wl-paste --type text --watch cliphist store
+exec wl-paste --type image --watch cliphist store
+
+
+# Clipboard history menu
+bindcode $mod+Control+55 exec \
+    cliphist list | fuzzel --dmenu | cliphist decode | wl-copy
+
+
+# ============================================================
+# IDLE / LOCK / SCREEN POWER
+# ============================================================
+
+# With lock screen
+#exec swayidle -w \
+#    timeout 300 'swaylock -f' \
+#    timeout 330 'swaymsg "output * power off"' \
+#        resume 'swaymsg "output * power on"' \
+#    timeout 1800 'systemctl suspend' \
+#    before-sleep 'swaylock -f'
+
+exec swayidle -w \
+    timeout 330 'swaymsg "output * power off"' \
+        resume 'swaymsg "output * power on"' \
+    timeout 1800 'systemctl suspend'
+
+# ============================================================
+# BACKLIGHT
+# ============================================================
+
+# If brightnessctl is installed:
+bindsym XF86MonBrightnessUp exec brightnessctl set +5%
+bindsym XF86MonBrightnessDown exec brightnessctl set 5%-
+
+
+# ============================================================
+# AUDIO
+# ============================================================
+
+# PipeWire / WirePlumber.
+# wpctl replaces the old PulseAudio pactl commands.
+
+bindsym XF86AudioRaiseVolume exec \
+    wpctl set-volume -l 1.0 @DEFAULT_AUDIO_SINK@ 5%+
+
+bindsym XF86AudioLowerVolume exec \
+    wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-
+
+bindsym XF86AudioMute exec \
+    wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle
+
+bindsym XF86AudioMicMute exec \
+    wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle
+
+
+# ============================================================
+# MEDIA
+# ============================================================
+
+bindsym XF86AudioPlay exec playerctl play-pause
+bindsym XF86AudioPause exec playerctl play-pause
+bindsym XF86AudioNext exec playerctl next
+bindsym XF86AudioPrev exec playerctl previous
+bindsym XF86AudioStop exec playerctl stop
+
+
+# ============================================================
+# FLOATING WINDOWS
+# ============================================================
+
+# Alt + mouse drag
+floating_modifier $mod normal
+
+
+# ============================================================
+# LAYOUT-INDEPENDENT KEYCODES
+# ============================================================
+
+# Main letter/number shortcuts use bindcode so their physical keys
+# stay the same on US / UA / DK / RU layouts.
+# Standard XKB keycodes used below:
+# 1..0 = 10..19, Q=24, W=25, E=26, R=27, S=39, D=40,
+# F=41, H=43, L=46, C=54, V=55, Super_L=133.
+
+
+# ============================================================
+# TERMINAL
+# ============================================================
+
+bindsym $mod+Return exec xfce4-terminal
+
+
+# ============================================================
+# APPLICATION LAUNCHER
+# ============================================================
+
+# Replaces dmenu_run.
+bindcode $mod+40 exec fuzzel
+
+
+# ============================================================
+# FILE MANAGER
+# ============================================================
+
+bindcode $mod+Control+26 exec thunar
+
+
+# ============================================================
+# LOCK SCREEN
+# ============================================================
+
+bindcode $mod+Control+46 exec swaylock -f
+
+
+# ============================================================
+# CHANGE FOCUS
+# ============================================================
+
+# Preserve your i3 behaviour.
+
+bindsym $mod+Control+Left focus left
+bindsym $mod+Control+Down focus down
+bindsym $mod+Control+Up focus up
+bindsym $mod+Control+Right focus right
+
+bindsym $mod+Tab focus next
+bindcode $mod+49 focus prev
+
+# ============================================================
+# MOVE FOCUSED WINDOW
+# ============================================================
+
+bindsym $mod+Shift+Left move left
+bindsym $mod+Shift+Down move down
+bindsym $mod+Shift+Up move up
+bindsym $mod+Shift+Right move right
+
+
+# ============================================================
+# SPLIT
+# ============================================================
+
+bindcode $mod+43 splith
+bindcode $mod+55 splitv
+
+
+# ============================================================
+# FULLSCREEN
+# ============================================================
+
+bindcode $mod+41 fullscreen toggle
+
+
+# ============================================================
+# CONTAINER LAYOUT
+# ============================================================
+
+bindcode $mod+39 layout stacking
+bindcode $mod+25 layout tabbed
+bindcode $mod+26 layout toggle split
+
+
+# ============================================================
+# FLOATING / TILING
+# ============================================================
+
+bindsym $mod+Shift+space floating toggle
+
+bindsym $mod+space focus mode_toggle
+
+
+# ============================================================
+# STICKY WINDOW
+# ============================================================
+
+bindsym $mod+Control+space sticky toggle
+
+
+# ============================================================
+# CLOSE WINDOW
+# ============================================================
+
+bindcode $mod+Shift+24 kill
+
+
+# ============================================================
+# WORKSPACES
+# ============================================================
+
+set $ws1 "1"
+set $ws2 "2"
+set $ws3 "3"
+set $ws4 "4"
+set $ws5 "5"
+set $ws6 "6"
+set $ws7 "7"
+set $ws8 "8"
+set $ws9 "9"
+set $ws10 "10"
+
+
+# Switch workspace
+bindcode $mod+10 workspace number $ws1
+bindcode $mod+11 workspace number $ws2
+bindcode $mod+12 workspace number $ws3
+bindcode $mod+13 workspace number $ws4
+bindcode $mod+14 workspace number $ws5
+bindcode $mod+15 workspace number $ws6
+bindcode $mod+16 workspace number $ws7
+bindcode $mod+17 workspace number $ws8
+bindcode $mod+18 workspace number $ws9
+bindcode $mod+19 workspace number $ws10
+
+
+# Next / previous workspace
+bindsym $mod+Right workspace next
+bindsym $mod+Left workspace prev
+
+
+# ============================================================
+# MOVE WINDOW TO WORKSPACE
+# ============================================================
+
+bindcode $mod+Shift+10 move container to workspace number $ws1
+bindcode $mod+Shift+11 move container to workspace number $ws2
+bindcode $mod+Shift+12 move container to workspace number $ws3
+bindcode $mod+Shift+13 move container to workspace number $ws4
+bindcode $mod+Shift+14 move container to workspace number $ws5
+bindcode $mod+Shift+15 move container to workspace number $ws6
+bindcode $mod+Shift+16 move container to workspace number $ws7
+bindcode $mod+Shift+17 move container to workspace number $ws8
+bindcode $mod+Shift+18 move container to workspace number $ws9
+bindcode $mod+Shift+19 move container to workspace number $ws10
+
+
+# ============================================================
+# SCREENSHOTS
+# ============================================================
+
+# Full desktop
+bindsym $mod+Print exec sh -c \
+    'mkdir -p "$HOME/Pictures/Screenshots"; \
+    grim "$HOME/Pictures/Screenshots/$(date +%Y-%m-%d_%H-%M-%S).png"'
+
+# Select region
+bindsym Shift+Print exec sh -c \
+    'mkdir -p "$HOME/Pictures/Screenshots"; \
+    grim -g "$(slurp)" \
+    "$HOME/Pictures/Screenshots/$(date +%Y-%m-%d_%H-%M-%S).png"'
+
+# Region -> clipboard
+bindsym Print exec sh -c \
+    'grim -g "$(slurp)" - | wl-copy'
+
+
+# ============================================================
+# RESIZE MODE
+# ============================================================
+
+mode "resize" {
+
+    bindsym Left resize shrink width 10px
+    bindsym Down resize grow height 10px
+    bindsym Up resize shrink height 10px
+    bindsym Right resize grow width 10px
+
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+    bindcode $mod+27 mode "default"
+}
+
+bindcode $mod+27 mode "resize"
+
+
+# ============================================================
+# SWAY CONTROL
+# ============================================================
+
+# Reload configuration
+bindcode $mod+Shift+27 reload
+
+
+# Exit Sway
+bindcode $mod+Shift+26 exec \
+    swaynag -t warning \
+    -m 'Do you really want to exit Sway?' \
+    -B 'Exit' 'swaymsg exit'
