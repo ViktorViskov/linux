@@ -152,6 +152,9 @@ set $ws9 "9"
 # ChatGPT always opens on workspace 9
 assign [app_id="^chatgpt$"] $ws9
 
+# Bitwarden extension window in Brave always opens as floating
+for_window [app_id="^brave-nngceckbapebfimnlniiiahkandclblb-Default$"] floating enable
+
 # ============================================================
 # WALLPAPER
 # ============================================================
@@ -342,7 +345,6 @@ bindsym $mod+Control+Up focus up
 bindsym $mod+Control+Right focus right
 
 bindsym $mod+Tab focus next
-bindcode $mod+49 focus prev
 
 # ============================================================
 # MOVE FOCUSED WINDOW
@@ -429,6 +431,9 @@ bindcode $mod+17 workspace number $ws8
 bindcode $mod+18 workspace number $ws9
 bindcode $mod+19 workspace number $ws10
 
+
+# Quick access to workspace 9 with Mod + `
+bindcode $mod+49 workspace number $ws9
 
 # Next / previous workspace
 bindsym $mod+Right workspace next
