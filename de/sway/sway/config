@@ -155,6 +155,9 @@ assign [app_id="^chatgpt$"] $ws9
 # Bitwarden extension window in Brave always opens as floating
 for_window [app_id="^brave-nngceckbapebfimnlniiiahkandclblb-Default$"] floating enable
 
+# VS Code's Open Folder dialog always opens as floating
+for_window [app_id="^code$" title="^Open Folder$"] floating enable
+
 # ============================================================
 # WALLPAPER
 # ============================================================
